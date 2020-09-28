@@ -1,0 +1,82 @@
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.sup-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: #eee;
+  color: #000;
+}
+
+.sup-right h2 {
+  margin: 10px 0;
+}
+
+.sup-right form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sup-right input,
+.sup-right select {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 16px;
+  border-style: none;
+  background-color: #fff;
+  padding: 0 40px;
+}
+
+.sup-right span {
+  font-size: 16px;
+  color: #f9a826;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sup-right button {
+  border-style: none;
+  margin-top: 8px;
+  width: 400px;
+  height: 50px;
+  background-color: #007acc;
+  color: #fff;
+}
+
+.sup-right a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+
+.sup-right p {
+  margin-top: 50px;
+  font-size: 16px;
+}
+
+.sup-left {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.6;
+}
+
+.sup-left img {
+  width: 500px;
+  max-width: 500px;
+}

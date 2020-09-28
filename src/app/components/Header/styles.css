@@ -1,0 +1,38 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background-color: #212121;
+}
+
+.header-container a {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+
+.header-container nav {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container nav span.header-user {
+  font-size: 1.1rem;
+}
+
+.header-container nav span.header-points {
+  font-size: 12px;
+  text-align: right;
+  line-height: 1.5rem;
+}
+
+.header-profile {
+  display: flex;
+  flex-direction: column;
+}

@@ -13,38 +13,38 @@ export default function Sidebar() {
     <aside className='sidebar'>
       <div className='sidebar-container'>
         <ul>
-          <li>
-            <Link to='/profile'>
+          <Link to='/profile'>
+            <li>
               <div className='sidebar-link'>
                 <img src={profile} alt='Meu perfil' />
                 <span>PERFIL</span>
               </div>
-            </Link>
-          </li>
-          <li>
-            <Link to='/dashboard'>
+            </li>
+          </Link>
+          <Link to='/dashboard'>
+            <li>
               <div className='sidebar-link'>
                 <img src={desafios} alt='Desafio' />
                 <span>DESAFIOS</span>
               </div>
-            </Link>
-          </li>
-          <li>
-            <Link to='/acertos'>
+            </li>
+          </Link>
+          <Link to='/acertos'>
+            <li>
               <div className='sidebar-link'>
                 <img src={acertos} alt='Meus acertos' />
                 <span>MEUS ACERTOS</span>
               </div>
-            </Link>
-          </li>
-          <li>
-            <Link to='/ranking'>
+            </li>
+          </Link>
+          <Link to='/ranking'>
+            <li>
               <div className='sidebar-link'>
                 <img src={ranking} alt='Ranking' />
                 <span>RANKING</span>
               </div>
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       </div>
     </aside>

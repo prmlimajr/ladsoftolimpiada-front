@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+// import { dispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { getUserPointsRequest } from '../../store/modules/score/actions';
 
 import Api from '../../services/api';
 
@@ -9,18 +12,28 @@ import './styles.css';
 class Header extends Component {
   state = {
     user: {},
+    points: null,
   };
 
   componentDidMount = () => {
     const { user } = this.props;
+    const pointsRequest = this.props.dispatch(
+      getUserPointsRequest(user.profile.id)
+    );
+    console.log(pointsRequest);
+    const { points } = this.props;
+
+    console.log('props.points', points);
 
     this.setState({
       user,
+      points,
     });
   };
 
   render() {
-    const { user } = this.props;
+    const { user, points } = this.props;
+
     return (
       <header>
         <div className='header-container'>
@@ -31,7 +44,7 @@ class Header extends Component {
 
             <div className='header-profile'>
               <span className='header-user'>{user.profile.name}</span>
-              <span className='header-points'>11 PONTOS</span>
+              <span className='header-points'>{points} PONTOS</span>
             </div>
           </nav>
         </div>
@@ -43,5 +56,7 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   user: state.user,
+  points: state.points,
 });
+
 export default connect(mapStateToProps)(Header);

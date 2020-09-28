@@ -8,7 +8,6 @@ import { signInRequest } from '../../store/modules/auth/actions';
 
 import login from '../../../assets/img/login.svg';
 import './styles.css';
-import { signIn } from '../../store/modules/auth/sagas';
 
 const schema = Yup.object().shape({
   email: Yup.string()

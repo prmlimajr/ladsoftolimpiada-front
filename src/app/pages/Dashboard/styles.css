@@ -18,6 +18,10 @@
   margin-bottom: 16px;
 }
 
+.db-left-header img {
+  cursor: pointer;
+}
+
 .db-left-header h1 {
   font-weight: 400;
 }

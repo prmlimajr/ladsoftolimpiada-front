@@ -1,0 +1,28 @@
+.qcard {
+  background-color: #424242;
+  height: 65px;
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qcard:hover {
+  background-color: #535353;
+}
+
+.qcard-selected {
+  background-color: #535353;
+  color: #fff;
+  height: 65px;
+  width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+}

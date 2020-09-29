@@ -10,25 +10,11 @@ import Api from '../../services/api';
 import './styles.css';
 
 class Header extends Component {
-  state = {
-    user: {},
-    points: null,
-  };
-
   componentDidMount = () => {
     const { user } = this.props;
     const pointsRequest = this.props.dispatch(
       getUserPointsRequest(user.profile.id)
     );
-    console.log(pointsRequest);
-    const { points } = this.props;
-
-    console.log('props.points', points);
-
-    this.setState({
-      user,
-      points,
-    });
   };
 
   render() {
@@ -56,7 +42,7 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   user: state.user,
-  points: state.points,
+  points: state.score.points,
 });
 
 export default connect(mapStateToProps)(Header);

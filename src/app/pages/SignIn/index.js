@@ -21,14 +21,15 @@ const schema = Yup.object().shape({
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
+  const isSigned = useSelector((state) => state.auth.isSigned);
+
   function handleSubmit({ email, password }) {
     dispatch(signInRequest(email, password));
   }
 
-  return (
-    <div className='signin'>
-      <div className='left'>
-        <h1>1ª Olímpiada de Programação</h1>
+  function renderForm() {
+    return (
+      <>
         <h2>Faça o seu login</h2>
 
         <Form schema={schema} onSubmit={handleSubmit}>
@@ -41,9 +42,33 @@ export default function SignIn() {
           <button type='submit'>{loading ? 'Carregando...' : 'ENTRAR'}</button>
         </Form>
 
-        <Link to='/register'>
+        <Link to='/register' className='register'>
           Ainda não criou sua conta? Faça o seu cadastro aqui.
         </Link>
+      </>
+    );
+  }
+
+  function renderLoggedIn() {
+    return (
+      <>
+        <p>Bem vindo, você está logado!</p>
+
+        <p>Acesse a olímpiada agora mesmo!</p>
+
+        <Link to='/dashboard' className='login-access-btn'>
+          ACESSAR
+        </Link>
+      </>
+    );
+  }
+
+  return (
+    <div className='signin'>
+      <div className='left'>
+        <h1>1ª Olímpiada de Programação</h1>
+
+        {isSigned ? renderLoggedIn() : renderForm()}
 
         <p>Desenvolvido por Paulo Lima</p>
       </div>

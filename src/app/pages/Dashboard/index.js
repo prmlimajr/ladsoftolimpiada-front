@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import QuestionCard from '../../components/QuestionCard';
 import { connect } from 'react-redux';
+import * as Yup from 'yup';
 
 import Api from '../../services/api';
 
@@ -10,6 +11,10 @@ import rightArrow from '../../../assets/img/right.svg';
 import questionMark from '../../../assets/img/question.svg';
 
 import './styles.css';
+
+const schema = Yup.object().shape({
+  answer: Yup.string().required(),
+});
 
 class Dashboard extends Component {
   state = {
@@ -25,6 +30,7 @@ class Dashboard extends Component {
       normal: [],
       hard: [],
     },
+    input: '',
   };
 
   componentDidMount = async () => {
@@ -144,6 +150,18 @@ class Dashboard extends Component {
     }
   };
 
+  handleSubmit = async (id) => {
+    Api.post(`/answer/${id}`, {
+      answer: this.state.input,
+    });
+  };
+
+  handleInputChange = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
+  };
+
   render() {
     console.log(this.state);
     const { questions, currentLevel, userLevel, selectedQuestion } = this.state;
@@ -178,23 +196,34 @@ class Dashboard extends Component {
         <div className='dashboard-right'>
           <h1>
             <img src={questionMark} alt='desafio' />{' '}
-            {`QUESTÃO ${selectedQuestion.id} - NÍVEL ${selectedQuestion.level}`}
+            {`QUESTÃO ${selectedQuestion.id || '--'} - NÍVEL ${
+              selectedQuestion.level || '--'
+            }`}
           </h1>
 
           <div className='db-right-question'>
             {selectedQuestion.description}
           </div>
 
-          <Form>
-            <Input
-              name='answer'
-              id='answer'
-              placeholder='Insira sua resposta'
-            />
+          <Form
+            schema={schema}
+            onSubmit={() => this.handleSubmit(selectedQuestion.id)}
+          >
+            {selectedQuestion.id && (
+              <Input
+                name='answer'
+                id='answer'
+                placeholder='Insira sua resposta'
+                onChange={this.handleInputChange}
+                value={this.state.input}
+              />
+            )}
 
-            <button type='submit' className='btn-answer'>
-              ENVIAR
-            </button>
+            {selectedQuestion.id && (
+              <button type='submit' className='btn-answer'>
+                ENVIAR
+              </button>
+            )}
           </Form>
 
           <div className='db-right-alert'>

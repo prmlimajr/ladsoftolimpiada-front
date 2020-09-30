@@ -17,6 +17,16 @@ class Header extends Component {
     );
   };
 
+  renderLevel = (points) => {
+    if (points < 6) {
+      return 1;
+    } else if (points >= 6 && points < 14) {
+      return 2;
+    } else {
+      return 3;
+    }
+  };
+
   render() {
     const { user, points } = this.props;
 
@@ -30,7 +40,9 @@ class Header extends Component {
 
             <div className='header-profile'>
               <span className='header-user'>{user.profile.name}</span>
-              <span className='header-points'>{points || '0'} PONTOS</span>
+              <span className='header-points'>
+                {points || '0'} PONTOS - NÍVEL {this.renderLevel(points)}
+              </span>
             </div>
           </nav>
         </div>

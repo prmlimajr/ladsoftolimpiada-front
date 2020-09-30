@@ -65,7 +65,6 @@ class Dashboard extends Component {
 
   changeLevel = (e) => {
     const { currentLevel } = this.state;
-
     if (e.target.id === 'next') {
       if (currentLevel < 3) {
         this.setState({
@@ -158,9 +157,6 @@ class Dashboard extends Component {
 
     const data = { userId, challengeId, answer };
     this.props.dispatch(answerQuestionRequest(data));
-    // Api.post(`/answer/${id}`, {
-    //   answer: this.state.input,
-    // });
   };
 
   handleInputChange = (e) => {

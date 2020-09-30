@@ -15,8 +15,8 @@ export function* getUserPoints({ payload }) {
     const { id } = payload;
 
     const response = yield call(Api.get, `score/${id}`);
-
-    const { points } = response.data[0];
+    console.log(response);
+    const { points } = response.data;
 
     yield put(getUserPointsSuccess(points));
   } catch (err) {
@@ -29,15 +29,19 @@ export function* answerQuestion({ payload }) {
     const { userId, challengeId, answer } = payload;
 
     const response = yield call(Api.get, `score/${userId}`);
-    const previousPoints = response.data[0].points;
+    const previousPoints = response.data.points;
+    console.log(previousPoints);
 
     const newPoints = yield call(Api.post, `answer/${challengeId}`, { answer });
-    const score = newPoints.data[0];
+    console.log('ssssssssssssssss', newPoints);
+    const score = newPoints.data.point;
+    console.log(score);
 
     const newResponse = yield call(Api.get, `score/${userId}`);
-    const updatedPoints = newResponse.data[0].points;
+    const updatedPoints = newResponse.data.points;
+    console.log(updatedPoints);
 
-    if (score > previousPoints) {
+    if (score) {
       toast.success('Parabéns! Você acertou uma questão!');
     }
 

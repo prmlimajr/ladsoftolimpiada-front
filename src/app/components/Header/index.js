@@ -30,7 +30,7 @@ class Header extends Component {
 
             <div className='header-profile'>
               <span className='header-user'>{user.profile.name}</span>
-              <span className='header-points'>{points} PONTOS</span>
+              <span className='header-points'>{points || '0'} PONTOS</span>
             </div>
           </nav>
         </div>

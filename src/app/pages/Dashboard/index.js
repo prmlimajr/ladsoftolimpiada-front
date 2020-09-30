@@ -10,6 +10,8 @@ import leftArrow from '../../../assets/img/left.svg';
 import rightArrow from '../../../assets/img/right.svg';
 import questionMark from '../../../assets/img/question.svg';
 
+import { answerQuestionRequest } from '../../store/modules/score/actions';
+
 import './styles.css';
 
 const schema = Yup.object().shape({
@@ -150,10 +152,15 @@ class Dashboard extends Component {
     }
   };
 
-  handleSubmit = async (id) => {
-    Api.post(`/answer/${id}`, {
-      answer: this.state.input,
-    });
+  handleSubmit = async (challengeId) => {
+    const answer = this.state.input;
+    const userId = this.props.user.profile.id;
+
+    const data = { userId, challengeId, answer };
+    this.props.dispatch(answerQuestionRequest(data));
+    // Api.post(`/answer/${id}`, {
+    //   answer: this.state.input,
+    // });
   };
 
   handleInputChange = (e) => {
@@ -163,7 +170,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { questions, currentLevel, userLevel, selectedQuestion } = this.state;
     const { easy, normal, hard } = questions;
 
@@ -196,8 +202,8 @@ class Dashboard extends Component {
         <div className='dashboard-right'>
           <h1>
             <img src={questionMark} alt='desafio' />{' '}
-            {`QUESTÃO ${selectedQuestion.id || '--'} - NÍVEL ${
-              selectedQuestion.level || '--'
+            {`QUESTÃO ${selectedQuestion.id || ''} - NÍVEL ${
+              selectedQuestion.level || ''
             }`}
           </h1>
 

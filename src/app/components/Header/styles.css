@@ -5,6 +5,9 @@
   align-items: center;
   padding: 15px 60px;
   background-color: #212121;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
 }
 
 .header-container a {

@@ -42,3 +42,20 @@ export function getUserPointsFailure() {
     type: '@score/GET_USER_POINTS_FAILURE',
   };
 }
+
+export function answerQuestionRequest(data) {
+  return {
+    type: '@score/ANSWER_QUESTION_REQUEST',
+    payload: {
+      userId: data.userId,
+      challengeId: data.challengeId,
+      answer: data.answer,
+    },
+  };
+}
+
+export function answerQuestionFailure() {
+  return {
+    type: '@score/ANSWER_QUESTION_FAILURE',
+  };
+}

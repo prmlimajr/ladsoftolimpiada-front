@@ -30,17 +30,14 @@ export function* answerQuestion({ payload }) {
 
     const response = yield call(Api.get, `score/${userId}`);
     const previousPoints = response.data[0].points;
-    console.log('previours', previousPoints);
 
     const newPoints = yield call(Api.post, `answer/${challengeId}`, { answer });
     const score = newPoints.data[0];
-    console.log(score);
 
     const newResponse = yield call(Api.get, `score/${userId}`);
     const updatedPoints = newResponse.data[0].points;
 
     if (score > previousPoints) {
-      console.log('caiu aqui');
       toast.success('Parabéns! Você acertou uma questão!');
     }
 

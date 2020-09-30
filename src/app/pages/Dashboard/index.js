@@ -41,19 +41,10 @@ class Dashboard extends Component {
     const normal = request.data.filter((challenge) => challenge.level === 2);
     const hard = request.data.filter((challenge) => challenge.level === 3);
 
-    const { points } = this.props;
-    let userLevel = null;
-
-    if (points < 6) {
-      userLevel = 1;
-    } else if (points >= 6 && points <= 14) {
-      userLevel = 2;
-    } else {
-      userLevel = 3;
-    }
-
+    const { level } = this.props;
+    console.log('O LVL é', level);
     this.setState({
-      userLevel,
+      userLevel: level,
       currentLevel: 1,
       questions: {
         easy,
@@ -65,8 +56,10 @@ class Dashboard extends Component {
 
   changeLevel = (e) => {
     const { currentLevel } = this.state;
+    const { level } = this.props;
+
     if (e.target.id === 'next') {
-      if (currentLevel < 3) {
+      if (currentLevel < level) {
         this.setState({
           currentLevel: currentLevel + 1,
         });
@@ -166,7 +159,8 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { questions, currentLevel, userLevel, selectedQuestion } = this.state;
+    const { questions, currentLevel, selectedQuestion } = this.state;
+    const userLevel = this.props.level;
     const { easy, normal, hard } = questions;
 
     const checkLevel = currentLevel <= userLevel ? currentLevel : userLevel;
@@ -245,6 +239,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   user: state.user,
   points: state.score.points,
+  level: state.score.level,
 });
 
 export default connect(mapStateToProps)(Dashboard);

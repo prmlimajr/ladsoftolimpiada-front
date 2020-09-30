@@ -1,0 +1,14 @@
+.rc-container {
+  min-width: 500px;
+  height: 70px;
+  background-color: #424242;
+  color: #c4c4c4;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.rc-container:hover {
+  background-color: #535353;
+}

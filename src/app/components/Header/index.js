@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getUserPointsRequest } from '../../store/modules/score/actions';
+import { signOut } from '../../store/modules/auth/actions';
 
 import Api from '../../services/api';
 
@@ -17,32 +18,29 @@ class Header extends Component {
     );
   };
 
-  renderLevel = (points) => {
-    if (points < 6) {
-      return 1;
-    } else if (points >= 6 && points < 14) {
-      return 2;
-    } else {
-      return 3;
-    }
+  handleSignOut = () => {
+    this.props.dispatch(signOut());
   };
 
   render() {
-    const { user, points } = this.props;
+    const { user, points, level } = this.props;
 
     return (
       <header>
         <div className='header-container'>
           <nav>
-            <Link to='/dashboard'>
+            <Link to='/dashboard' className='logo'>
               <h1>1ª OLÍMPIADA DE PROGRAMAÇÃO</h1>
             </Link>
 
             <div className='header-profile'>
               <span className='header-user'>{user.profile.name}</span>
               <span className='header-points'>
-                {points || '0'} PONTOS - NÍVEL {this.renderLevel(points)}
+                {points || '0'} PONTOS - NÍVEL {level || 1}
               </span>
+              <Link to='/' className='logout' onClick={this.handleSignOut}>
+                SAIR
+              </Link>
             </div>
           </nav>
         </div>
@@ -55,6 +53,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   user: state.user,
   points: state.score.points,
+  level: state.score.level,
 });
 
 export default connect(mapStateToProps)(Header);

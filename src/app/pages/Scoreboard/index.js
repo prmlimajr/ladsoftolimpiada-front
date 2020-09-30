@@ -1,16 +1,52 @@
 import React, { Component } from 'react';
-import Api from '../../services/api';
+import { connect } from 'react-redux';
+
+import { getRankingRequest } from '../../store/modules/score/actions';
+
+import RankingCard from '../../components/RankingCard';
+
+import './styles.css';
 
 class Scoreboard extends Component {
-  state = {};
+  state = {
+    ranking: [],
+  };
 
-  componentDidMount = async () => {
-    const res = await Api.get('/score');
+  componentDidMount = () => {
+    console.log('montou');
+    this.props.dispatch(getRankingRequest());
   };
 
   render() {
-    return <div>Ranking</div>;
+    const { ranking } = this.props;
+
+    return (
+      <div className='ranking-container'>
+        <h1>RANKING</h1>
+        <p>Acompanhe o progresso de todos os competidores!</p>
+        <ol>
+          {ranking.map((user) => {
+            return (
+              <RankingCard
+                id={Math.random()}
+                name={user.name}
+                course={user.course}
+                semester={user.semester}
+                points={user.points}
+              />
+            );
+          })}
+        </ol>
+      </div>
+    );
   }
 }
 
-export default Scoreboard;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  user: state.user,
+  points: state.score.points,
+  level: state.score.level,
+  ranking: state.score.ranking,
+});
+export default connect(mapStateToProps)(Scoreboard);

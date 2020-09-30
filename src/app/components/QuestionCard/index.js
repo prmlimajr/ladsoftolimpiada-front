@@ -12,7 +12,6 @@ class QuestionCard extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { selected } = this.state;
     return (
       <div

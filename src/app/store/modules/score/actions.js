@@ -1,6 +1,7 @@
 export function getRankingRequest() {
   return {
     type: '@score/GET_RANKING_REQUEST',
+    payload: {},
   };
 }
 
@@ -28,11 +29,12 @@ export function getUserPointsRequest(id) {
   };
 }
 
-export function getUserPointsSuccess(points) {
+export function getUserPointsSuccess(points, ranking) {
   return {
     type: '@score/GET_USER_POINTS_SUCCESS',
     payload: {
       points,
+      ranking,
     },
   };
 }

@@ -1,0 +1,12 @@
+.ranking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 120px 0;
+}
+
+.ranking-container p {
+  margin: 30px;
+}

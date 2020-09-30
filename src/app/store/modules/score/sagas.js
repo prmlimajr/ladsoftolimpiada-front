@@ -7,18 +7,22 @@ import {
   getUserPointsSuccess,
   getUserPointsFailure,
   answerQuestionFailure,
+  getRankingSuccess,
 } from './actions';
 
 export function* getUserPoints({ payload }) {
-  console.log({ payload });
+  console.log('getUserPoints', payload);
   try {
     const { id } = payload;
 
+    const rankingRequest = yield call(Api.get, 'score');
+    const ranking = rankingRequest.data;
+
     const response = yield call(Api.get, `score/${id}`);
-    console.log(response);
+
     const { points } = response.data;
 
-    yield put(getUserPointsSuccess(points));
+    yield put(getUserPointsSuccess(points, ranking));
   } catch (err) {
     yield put(getUserPointsFailure());
   }
@@ -47,11 +51,26 @@ export function* answerQuestion({ payload }) {
 
     yield put(getUserPointsSuccess(updatedPoints));
   } catch (err) {
-    toast.error('Não foi possível responder esta questão');
+    toast.error(
+      'Não foi possível responder esta questão. Você pode já ter respondido ela antes.'
+    );
     yield put(answerQuestionFailure());
   }
 }
+
+export function* getRanking({ payload }) {
+  try {
+    const rankingRequest = yield call(Api.get, 'ranking');
+    const ranking = rankingRequest.data;
+
+    yield put(getRankingSuccess(ranking));
+  } catch (err) {}
+
+  console.log('bateu aqui');
+}
+
 export default all([
   takeLatest('@score/GET_USER_POINTS_REQUEST', getUserPoints),
   takeLatest('@score/ANSWER_QUESTION_REQUEST', answerQuestion),
+  takeLatest('@score/GET_RANKING_REQUEST', getRanking),
 ]);

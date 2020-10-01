@@ -10,3 +10,30 @@
 .ranking-container p {
   margin: 30px;
 }
+
+.ranking-container ol {
+  max-height: 500px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #303030;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+}
+
+.dashboard-right {
+  min-width: 550px;
+}
+
+.dashboard-right h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+  margin-bottom: 16px;
+}

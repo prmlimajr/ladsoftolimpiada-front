@@ -6,16 +6,12 @@ import { connect } from 'react-redux';
 import { getUserPointsRequest } from '../../store/modules/score/actions';
 import { signOut } from '../../store/modules/auth/actions';
 
-import Api from '../../services/api';
-
 import './styles.css';
 
 class Header extends Component {
   componentDidMount = () => {
     const { user } = this.props;
-    const pointsRequest = this.props.dispatch(
-      getUserPointsRequest(user.profile.id)
-    );
+    this.props.dispatch(getUserPointsRequest(user.profile.id));
   };
 
   handleSignOut = () => {

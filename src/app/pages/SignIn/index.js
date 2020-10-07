@@ -7,6 +7,8 @@ import * as Yup from 'yup';
 import { signInRequest } from '../../store/modules/auth/actions';
 
 import login from '../../../assets/img/login.svg';
+import uninassau from '../../../assets/img/uninassau.png';
+import ladsoft from '../../../assets/img/ladsoft.png';
 import './styles.css';
 
 const schema = Yup.object().shape({
@@ -70,7 +72,15 @@ export default function SignIn() {
 
         {isSigned ? renderLoggedIn() : renderForm()}
 
-        <p>Desenvolvido por Paulo Lima e Thalys Rossi</p>
+        <p>
+          Desenvolvido por <a href='https://github.com/prmlimajr'>Paulo Lima</a>{' '}
+          e <a href='https://github.com/ThalysRossi'>Thalys Rossi</a>
+        </p>
+
+        <div className='logos'>
+          <img src={uninassau} alt='uninassau' className='logo-uninassau' />
+          <img src={ladsoft} alt='ladsoft' className='logo-ladsoft' />
+        </div>
       </div>
 
       <div className='right'>

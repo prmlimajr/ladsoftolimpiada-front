@@ -46,11 +46,3 @@ a {
 ul {
   list-style: none;
 }
-
-@media (max-width: 500px) {
-  body,
-  #root {
-    background-color: #fff;
-    content: 'ESTE SITE SÓ DEVE SER ACESSADO NO DESKTOP';
-  }
-}

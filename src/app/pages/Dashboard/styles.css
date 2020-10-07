@@ -65,10 +65,6 @@
   min-height: 250px;
 }
 
-.db-right-question pre {
-  max-width: 400px;
-}
-
 form {
   display: flex;
   flex-direction: row;

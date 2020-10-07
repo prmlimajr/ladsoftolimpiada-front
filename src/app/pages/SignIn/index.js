@@ -70,7 +70,7 @@ export default function SignIn() {
 
         {isSigned ? renderLoggedIn() : renderForm()}
 
-        <p>Desenvolvido por Paulo Lima</p>
+        <p>Desenvolvido por Paulo Lima e Thalys Rossi</p>
       </div>
 
       <div className='right'>

@@ -198,7 +198,7 @@ class Dashboard extends Component {
           </h1>
 
           <div className='db-right-question'>
-            <pre>{selectedQuestion.description}</pre>
+            {selectedQuestion.description}
           </div>
 
           <Form

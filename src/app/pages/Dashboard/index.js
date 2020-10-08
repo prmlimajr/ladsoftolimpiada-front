@@ -149,6 +149,39 @@ class Dashboard extends Component {
     const userId = this.props.user.profile.id;
 
     const data = { userId, challengeId, answer };
+
+    if (challengeId <= 10) {
+      const updatedList = this.state.questions.easy.filter(
+        (challenge) => challenge.id !== challengeId
+      );
+      this.setState({
+        questions: {
+          ...this.state.questions,
+          easy: updatedList,
+        },
+      });
+    } else if (challengeId > 10 && challengeId <= 20) {
+      const updatedList = this.state.questions.normal.filter(
+        (challenge) => challenge.id !== challengeId
+      );
+      this.setState({
+        questions: {
+          ...this.state.questions,
+          normal: updatedList,
+        },
+      });
+    } else {
+      const updatedList = this.state.questions.hard.filter(
+        (challenge) => challenge.id !== challengeId
+      );
+      this.setState({
+        questions: {
+          ...this.state.questions,
+          hard: updatedList,
+        },
+      });
+    }
+
     this.props.dispatch(answerQuestionRequest(data));
   };
 

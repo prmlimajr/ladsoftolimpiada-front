@@ -10,6 +10,7 @@ import login from '../../../assets/img/login.svg';
 import uninassau from '../../../assets/img/uninassau.png';
 import ladsoft from '../../../assets/img/ladsoft.png';
 import semana from '../../../assets/img/semana.png';
+import laftec from '../../../assets/img/laftec.png';
 import './styles.css';
 
 const schema = Yup.object().shape({
@@ -69,7 +70,8 @@ export default function SignIn() {
   return (
     <div className='signin'>
       <div className='left'>
-        <h1>1ª Olímpiada de Programação</h1>
+        <img src={semana} alt='semana' className='logo-semana' />
+        <h1 className='signin-title'>1ª Olímpiada de Programação</h1>
 
         {isSigned ? renderLoggedIn() : renderForm()}
 
@@ -79,9 +81,9 @@ export default function SignIn() {
         </p>
 
         <div className='logos'>
-          <img src={semana} alt='semana' className='logo-semana' />
           <img src={uninassau} alt='uninassau' className='logo-uninassau' />
           <img src={ladsoft} alt='ladsoft' className='logo-ladsoft' />
+          <img src={laftec} alt='laftec' className='logo-laftec' />
         </div>
       </div>
 

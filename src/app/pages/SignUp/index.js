@@ -10,16 +10,14 @@ import { signUpRequest } from '../../store/modules/auth/actions';
 import './styles.css';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório'),
-  email: Yup.string()
-    .email('Insira um email válido')
-    .required('O email é obrigatório'),
+  name: Yup.string().required(),
+  email: Yup.string().email().required(),
   password: Yup.string()
     .min(6, 'A senha deve ter no mínimo 6 caracteres')
-    .required('A senha é obrigatória'),
-  course: Yup.string().required('O curso é obrigatório'),
-  semester: Yup.number().positive().required('O período é obrigatório'),
-  studentId: Yup.string().required('O número de matrícula é obrigatório'),
+    .required('A senha deve ter no mínimo 6 caracteres'),
+  course: Yup.string().required(),
+  semester: Yup.number().positive().required(),
+  studentId: Yup.string().required(),
 });
 
 export default function SignUp() {
@@ -51,46 +49,47 @@ export default function SignUp() {
             id='name'
             type='text'
             placeholder='Insira o seu nome'
+            required
           />
           <Input
             name='email'
             id='email'
             type='email'
             placeholder='Insira o seu email'
+            required
           />
           <Input
             name='password'
             id='password'
             type='password'
             placeholder='Insira a sua senha'
+            required
           />
-          {/* <Select
-            name='course'
-            placeholder='Escolha o seu curso'
-            options={[
-              { id: 1, title: 'Ciência da Computação' },
-              { id: 2, title: 'Sistemas de Informação' },
-              { id: 3, title: 'Engenharia da Computação' },
-              { id: 4, title: 'Outro' },
-            ]}
-          /> */}
-          <Input name='course' id='course' placeholder='Insira o seu curso' />
-
           <Input
-            name='semester'
-            id='semester'
-            type='number'
-            placeholder='Insira o seu período'
-            min={1}
-            max={10}
+            name='course'
+            id='course'
+            placeholder='Insira o seu curso'
             required
           />
 
-          <Input
-            name='studentId'
-            type='text'
-            placeholder='Insira o seu número de matrícula'
-          />
+          <div className='semester-stdid'>
+            <Input
+              name='semester'
+              id='semester'
+              type='number'
+              placeholder='Insira o seu período'
+              min={1}
+              max={10}
+              required
+            />
+
+            <Input
+              name='studentId'
+              type='text'
+              placeholder='Número de matrícula'
+              required
+            />
+          </div>
 
           <button type='submit'>CADASTRAR</button>
         </Form>

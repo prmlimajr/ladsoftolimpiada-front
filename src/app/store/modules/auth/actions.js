@@ -34,7 +34,7 @@ export function signUpRequest(
 
 export function signFailure() {
   return {
-    type: '@auth/SIGN_FAILURE',
+    type: '@auth/SIGN_IN_FAILURE',
   };
 }
 

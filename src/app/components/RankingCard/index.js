@@ -7,8 +7,8 @@ class RankingCard extends Component {
     return (
       <div className='rc-container'>
         <li key={this.props.id}>
-          <strong>{this.props.name}</strong> - {this.props.course} -{' '}
-          {this.props.semester}º período -{' '}
+          <strong>{this.props.name}</strong> - Matrícula: {this.props.studentId}{' '}
+          - {this.props.course} - {this.props.semester}º período -{' '}
           <strong>{this.props.points} PONTOS</strong>
         </li>
       </div>

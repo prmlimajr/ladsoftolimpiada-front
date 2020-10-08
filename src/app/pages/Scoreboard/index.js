@@ -26,10 +26,12 @@ class Scoreboard extends Component {
         <p>Acompanhe o progresso de todos os competidores!</p>
         <ol>
           {ranking.map((user) => {
+            console.log(user);
             return (
               <RankingCard
                 id={Math.random()}
                 name={user.name}
+                studentId={user.studentId}
                 course={user.course}
                 semester={user.semester}
                 points={user.points}

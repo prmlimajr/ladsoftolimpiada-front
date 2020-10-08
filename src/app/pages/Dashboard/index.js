@@ -182,6 +182,9 @@ class Dashboard extends Component {
       });
     }
 
+    this.setState({
+      input: '',
+    });
     this.props.dispatch(answerQuestionRequest(data));
   };
 

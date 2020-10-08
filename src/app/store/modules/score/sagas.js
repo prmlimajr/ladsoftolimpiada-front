@@ -47,6 +47,8 @@ export function* answerQuestion({ payload }) {
 
     if (score) {
       toast.success('Parabéns! Você acertou uma questão!');
+    } else {
+      toast.error('Que pena. Você errou...');
     }
 
     yield put(getUserPointsSuccess(updatedPoints));

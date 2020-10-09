@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   points: null,
   level: null,
   ranking: [],
+  userAnswerList: [],
 };
 
 const checkLevel = (points) => {
@@ -31,6 +32,12 @@ export default function points(state = INITIAL_STATE, action) {
     case '@score/GET_RANKING_SUCCESS':
       return produce(state, (draft) => {
         draft.ranking = action.payload.ranking;
+      });
+    case '@score/LIST_ANSWERS_REQUEST':
+      return produce(state, (draft) => {});
+    case '@score/LIST_ANSWERS_SUCCESS':
+      return produce(state, (draft) => {
+        draft.userAnswerList = action.payload.userAnswerList;
       });
     default:
       return state;

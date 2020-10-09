@@ -5,6 +5,8 @@ import profile from '../../../assets/img/profile.svg';
 import ranking from '../../../assets/img/ranking.svg';
 import acertos from '../../../assets/img/acertos.svg';
 import desafios from '../../../assets/img/desafios.svg';
+import rules from '../../../assets/img/rules.svg';
+import help from '../../../assets/img/help.svg';
 
 import './styles.css';
 
@@ -29,7 +31,7 @@ export default function Sidebar() {
               </div>
             </li>
           </Link>
-          <Link to='/acertos'>
+          <Link to='/my-answers'>
             <li>
               <div className='sidebar-link'>
                 <img src={acertos} alt='Meus acertos' />
@@ -42,6 +44,22 @@ export default function Sidebar() {
               <div className='sidebar-link'>
                 <img src={ranking} alt='Ranking' />
                 <span>RANKING</span>
+              </div>
+            </li>
+          </Link>
+          <Link to='/rules'>
+            <li>
+              <div className='sidebar-link'>
+                <img src={rules} alt='Regras' />
+                <span>REGRAS</span>
+              </div>
+            </li>
+          </Link>
+          <Link to='/help'>
+            <li>
+              <div className='sidebar-link'>
+                <img src={help} alt='Suporte' />
+                <span>SUPORTE</span>
               </div>
             </li>
           </Link>

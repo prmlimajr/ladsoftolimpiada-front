@@ -104,3 +104,11 @@ input::placeholder {
   width: 100%;
   color: #000;
 }
+
+.db-right-alert p {
+  margin-bottom: 8px;
+}
+
+.db-right-alert p a {
+  font-weight: bold;
+}

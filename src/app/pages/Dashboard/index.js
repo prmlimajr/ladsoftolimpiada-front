@@ -9,6 +9,7 @@ import Api from '../../services/api';
 import leftArrow from '../../../assets/img/left.svg';
 import rightArrow from '../../../assets/img/right.svg';
 import questionMark from '../../../assets/img/question.svg';
+import alert from '../../../assets/img/alert.svg';
 
 import { answerQuestionRequest } from '../../store/modules/score/actions';
 
@@ -259,11 +260,32 @@ class Dashboard extends Component {
           </Form>
 
           <div className='db-right-alert'>
-            Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus
-            quis, vehicula ac nisi. Quem num gosta di mé, boa gentis num é.
-            Interessantiss quisso pudia ce receita de bolis, mais bolis eu num
-            gostis. Nec orci ornare consequat. Praesent lacinia ultrices
-            consectetur. Sed non ipsum felis.
+            <h1>
+              <img src={alert} alt='Atenção' /> ATENÇÃO
+            </h1>
+            <p>
+              Você tem apenas uma chance para responder cada questão. Após
+              apertar o botão de enviar, ou apertar a tecla Enter, a resposta o
+              sistema não permite que você envie uma nova resposta para a mesma
+              questão, portanto apenas aperte o botão quando estiver certo de
+              que deseja fazê-lo.
+            </p>
+            <p>
+              O sistema compara a sua resposta com a resposta correta através de
+              igualdade, então atente para informar a resposta no padrão exato
+              que está sendo solicitado. Caso sua resposta seja A, insira apenas
+              A e não "letra A" ou "alternativa A".
+            </p>
+            <p>
+              Em caso de necessidade consulte o suporte imediatamente através do
+              whatsapp:{' '}
+              <a
+                href='https://api.whatsapp.com/send?phone=5581999813319&text=Oi%2C%20Paulo%2C%20eu%20tenho%20um%20problema%20com%20a%20ol%C3%ADmpiada%3A'
+                target='_blank'
+              >
+                (81)99981-3319
+              </a>
+            </p>
           </div>
         </div>
       </div>

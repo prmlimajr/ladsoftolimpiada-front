@@ -8,6 +8,7 @@ import {
   getUserPointsFailure,
   answerQuestionFailure,
   getRankingSuccess,
+  listUserAnswersSuccess,
 } from './actions';
 
 export function* getUserPoints({ payload }) {
@@ -71,8 +72,19 @@ export function* getRanking({ payload }) {
   console.log('bateu aqui');
 }
 
+export function* getUserAnswers({ payload }) {
+  try {
+    const userAnswerListRequest = yield call(Api.get, 'points');
+
+    const userAnswerList = userAnswerListRequest.data;
+
+    yield put(listUserAnswersSuccess(userAnswerList));
+  } catch (err) {}
+}
+
 export default all([
   takeLatest('@score/GET_USER_POINTS_REQUEST', getUserPoints),
   takeLatest('@score/ANSWER_QUESTION_REQUEST', answerQuestion),
   takeLatest('@score/GET_RANKING_REQUEST', getRanking),
+  takeLatest('@score/LIST_ANSWERS_REQUEST', getUserAnswers),
 ]);

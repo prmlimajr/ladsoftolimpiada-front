@@ -61,3 +61,25 @@ export function answerQuestionFailure() {
     type: '@score/ANSWER_QUESTION_FAILURE',
   };
 }
+
+export function listUserAnswersRequest() {
+  return {
+    type: '@score/LIST_ANSWERS_REQUEST',
+    payload: {},
+  };
+}
+
+export function listUserAnswersSuccess(userAnswerList) {
+  return {
+    type: '@score/LIST_ANSWERS_SUCCESS',
+    payload: {
+      userAnswerList,
+    },
+  };
+}
+
+export function listUserAnswersFailure() {
+  return {
+    type: '@score/LIST_ANSWERS_FAILURE',
+  };
+}
